@@ -1,0 +1,1 @@
+opm install v8runner add cmdline logos tempfiles ftp gitrunner 1connector vanessa-automation asserts coverage coverage-cli datetime vanessa-runner
