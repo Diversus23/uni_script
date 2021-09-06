@@ -3553,6 +3553,23 @@
 		PREVIEW_TEXT = VERSION_UPDATES + PREVIEW_TEXT;
 	КонецЕсли;
 
+	PREVIEW_PICTURE = Настройки.Получить("PREVIEW_PICTURE");
+	Если ЗначениеЗаполнено(PREVIEW_PICTURE) Тогда
+		PREVIEW_PICTURE = "";
+	КонецЕсли;
+	KEYWORDS_UPDATES = Настройки.Получить("KEYWORDS_UPDATES");
+	Если ЗначениеЗаполнено(KEYWORDS_UPDATES) Тогда
+		KEYWORDS_UPDATES = "";
+	КонецЕсли;
+	SHORT_DESCRIPTION = Настройки.Получить("SHORT_DESCRIPTION");
+	Если ЗначениеЗаполнено(SHORT_DESCRIPTION) Тогда
+		SHORT_DESCRIPTION = "";
+	КонецЕсли;
+	SITE_NEWS_IBLOCK_SECTION_ID = Настройки.Получить("SITE_NEWS_IBLOCK_SECTION_ID");
+	Если ЗначениеЗаполнено(SITE_NEWS_IBLOCK_SECTION_ID) Тогда
+		SITE_NEWS_IBLOCK_SECTION_ID = "";
+	КонецЕсли;
+
 	Лог.Информация("Страница запуска: " + мHTTP);	
 
 	Попытка
@@ -3580,6 +3597,26 @@
 		|" + СтрокаBase64TXT + Символы.ПС + "
 		|--" + Boundary + "
 		|Content-disposition: form-data; name=""preview""
+		|Content-Type: application/octet-stream;
+		|
+		|" + SHORT_DESCRIPTION + Символы.ПС + "
+		|--" + Boundary + "
+		|Content-Disposition: form-data; name=""SHORT_DESCRIPTION""
+		|Content-Type: application/octet-stream;
+		|
+		|" + KEYWORDS_UPDATES + Символы.ПС + "
+		|--" + Boundary + "
+		|Content-Disposition: form-data; name=""KEYWORDS_UPDATES""
+		|Content-Type: application/octet-stream;
+		|
+		|" + PREVIEW_PICTURE + Символы.ПС + "
+		|--" + Boundary + "
+		|Content-Disposition: form-data; name=""PREVIEW_PICTURE""
+		|Content-Type: application/octet-stream;
+		|
+		|" + SITE_NEWS_IBLOCK_SECTION_ID + Символы.ПС + "
+		|--" + Boundary + "
+		|Content-Disposition: form-data; name=""SITE_NEWS_IBLOCK_SECTION_ID""
 		|Content-Type: application/octet-stream;
 		|
 		|" + PREVIEW_TEXT + "
