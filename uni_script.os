@@ -3554,19 +3554,19 @@
 	КонецЕсли;
 
 	PREVIEW_PICTURE = Настройки.Получить("PREVIEW_PICTURE");
-	Если ЗначениеЗаполнено(PREVIEW_PICTURE) Тогда
+	Если НЕ ЗначениеЗаполнено(PREVIEW_PICTURE) Тогда
 		PREVIEW_PICTURE = "";
 	КонецЕсли;
 	KEYWORDS_UPDATES = Настройки.Получить("KEYWORDS_UPDATES");
-	Если ЗначениеЗаполнено(KEYWORDS_UPDATES) Тогда
+	Если НЕ ЗначениеЗаполнено(KEYWORDS_UPDATES) Тогда
 		KEYWORDS_UPDATES = "";
 	КонецЕсли;
 	SHORT_DESCRIPTION = Настройки.Получить("SHORT_DESCRIPTION");
-	Если ЗначениеЗаполнено(SHORT_DESCRIPTION) Тогда
+	Если НЕ ЗначениеЗаполнено(SHORT_DESCRIPTION) Тогда
 		SHORT_DESCRIPTION = "";
 	КонецЕсли;
 	SITE_NEWS_IBLOCK_SECTION_ID = Настройки.Получить("SITE_NEWS_IBLOCK_SECTION_ID");
-	Если ЗначениеЗаполнено(SITE_NEWS_IBLOCK_SECTION_ID) Тогда
+	Если НЕ ЗначениеЗаполнено(SITE_NEWS_IBLOCK_SECTION_ID) Тогда
 		SITE_NEWS_IBLOCK_SECTION_ID = "";
 	КонецЕсли;
 
