@@ -3575,6 +3575,12 @@
 	Если НЕ ЗначениеЗаполнено(SITE_NEWS_IBLOCK_SECTION_ID) Тогда
 		SITE_NEWS_IBLOCK_SECTION_ID = "";
 	КонецЕсли;
+	PROGRAM = Настройки.Получить("PROGRAM");
+	Если НЕ ЗначениеЗаполнено(PROGRAM) Тогда
+		Лог.Ошибка("Не заполнен параметр ""PROGRAM"" - название программы");
+		КодВозврата = 86;
+		Возврат;
+	КонецЕсли;	
 
 	Лог.Информация("Страница запуска: " + мHTTP);	
 
@@ -3626,6 +3632,11 @@
 		|Content-Type: application/octet-stream;
 		|
 		|" + SITE_NEWS_IBLOCK_SECTION_ID + "
+		|--" + Boundary + "
+		|Content-Disposition: form-data; name=""PROGRAM""
+		|Content-Type: application/octet-stream;
+		|
+		|" + PROGRAM + "
 		|--" + Boundary + "
 		|Content-disposition: form-data; name=""date""
 		|Content-Type: application/octet-stream;
