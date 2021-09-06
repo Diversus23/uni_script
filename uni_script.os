@@ -3599,27 +3599,27 @@
 		|Content-disposition: form-data; name=""preview""
 		|Content-Type: application/octet-stream;
 		|
-		|" + SHORT_DESCRIPTION + Символы.ПС + "
+		|" + PREVIEW_TEXT + "
 		|--" + Boundary + "
 		|Content-Disposition: form-data; name=""SHORT_DESCRIPTION""
 		|Content-Type: application/octet-stream;
 		|
-		|" + KEYWORDS_UPDATES + Символы.ПС + "
+		|" + SHORT_DESCRIPTION + Символы.ПС + "
 		|--" + Boundary + "
 		|Content-Disposition: form-data; name=""KEYWORDS_UPDATES""
 		|Content-Type: application/octet-stream;
 		|
-		|" + PREVIEW_PICTURE + Символы.ПС + "
+		|" + KEYWORDS_UPDATES + Символы.ПС + "
 		|--" + Boundary + "
 		|Content-Disposition: form-data; name=""PREVIEW_PICTURE""
 		|Content-Type: application/octet-stream;
 		|
-		|" + SITE_NEWS_IBLOCK_SECTION_ID + Символы.ПС + "
+		|" + PREVIEW_PICTURE + Символы.ПС + "
 		|--" + Boundary + "
 		|Content-Disposition: form-data; name=""SITE_NEWS_IBLOCK_SECTION_ID""
 		|Content-Type: application/octet-stream;
 		|
-		|" + PREVIEW_TEXT + "
+		|" + SITE_NEWS_IBLOCK_SECTION_ID + Символы.ПС + "
 		|--" + Boundary + "
 		|Content-disposition: form-data; name=""date""
 		|Content-Type: application/octet-stream;
