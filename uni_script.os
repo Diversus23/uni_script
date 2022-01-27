@@ -1,5 +1,5 @@
 // BSLLS-off
-// UNI_SCRIPT - универсальный скрипт на языке 1С VERSION: 2022.01.19
+// UNI_SCRIPT - универсальный скрипт на языке 1С VERSION: 2022.01.27
 // Версия
 // TO-DO
 //	1. Добавить определение V83.ComConnector где определять 83 по платформе(?)	
@@ -220,7 +220,7 @@
 //				- /S <адрес> (тип базы - серверная, <Имя компьютера, работающего сервером приложений>\<Ссылочное имя информационной базы, известное в рамках сервера 1С:Предприятия 8>)
 //				- /N (логин администратора ИБ, если не задан, то без логина)
 //				- /P (пароль администратора ИБ)
-//				- /UParams <параметры> - параметры проверки конфигурации
+//				- /UParams <параметры> - параметры проверки конфигурации "-ConfigLogIntegrity -IncorrectReferences -ThinClient -WebClient -Server -ExternalConnection –ExternalConnectionServer -MobileAppClient -MobileAppServer -ThickClientManagedApplication -ThickClientServerManagedApplication -ThickClientOrdinaryApplication -ThickClientServerOrdinaryApplication -DistributiveModules -UnreferenceProcedures -HandlersExistence -EmptyHandlers -ExtendedModulesCheck -CheckUseModality -UnsupportedFunctional -AllExtensions"
 //
 //		- /UpdateIB - принудительный запуск процедуры обновления ИБ с помощью Комконнектора (oscript "c:\work\uni\uni_script.os" /UpdateIB /F "c:\Base1C\vanessa\chistaya")
 //				- /F <путь> (тип базы - файловая)
@@ -4149,22 +4149,26 @@
 	Лог.Информация("Начало проверки модулей конфигурации");
 
 	// Делаем копию
-	ПараметрыЗапуска 			= Конфигуратор.ПолучитьПараметрыЗапуска();
+	ПараметрыЗапуска = Конфигуратор.ПолучитьПараметрыЗапуска();
 	ПараметрыЗапуска.Добавить("/CheckConfig");
 	СтрПарметрыПроверки = "";
 	Массив = Новый Массив();
-	Массив.Добавить("-ThinClient");
-	Массив.Добавить("-WebClient");
-	Массив.Добавить("-Server");
-	Массив.Добавить("-ExternalConnection");
-	Массив.Добавить("-ExternalConnectionServer");
-	Массив.Добавить("-ExternalConnection");
-	Массив.Добавить("-ExternalConnectionServer");
-	Для Каждого Стр Из Массив Цикл
-		ПараметрыЗапуска.Добавить(Стр);
-		СтрПарметрыПроверки = СтрПарметрыПроверки + Стр + " ";
-	КонецЦикла;
-	СтрПарметрыПроверки = СокрЛП(СтрПарметрыПроверки);
+	СтрПарметрыПроверки = Параметры["/UParams"];
+	Если НЕ ЗначениеЗаполнено(СтрПарметрыПроверки) Тогда
+		Массив.Добавить("-ThinClient");
+		Массив.Добавить("-WebClient");
+		Массив.Добавить("-Server");
+		Массив.Добавить("-ExternalConnection");
+		Массив.Добавить("-ExternalConnectionServer");
+		Массив.Добавить("-ExternalConnection");
+		Массив.Добавить("-ExternalConnectionServer");
+		СтрПарметрыПроверки = "";
+		Для Каждого Стр Из Массив Цикл
+			ПараметрыЗапуска.Добавить(Стр);
+			СтрПарметрыПроверки = СтрПарметрыПроверки + Стр + " ";
+		КонецЦикла;
+	КонецЕсли;
+
 	Лог.Информация("Ключи запуска проверки: " + СтрПарметрыПроверки);
 	мВременныйФайл = ПолучитьИмяВременногоФайла();	
 	ПараметрыЗапуска.Добавить("/Out " + мВременныйФайл);
