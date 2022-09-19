@@ -3918,7 +3918,7 @@
 
 КонецПроцедуры
 
-//%path1C% /S "alba/tester" /N"alba" /P"204042" /TESTMANAGER /C"-Scenario УправлениеITОтделом8.ПроверкаУИТ -PathIB %InfoBaseLocation% -CloseAfterExecution True -ErrorFile %ErrorFile%"
+//%path1C% /S "alba/tester" /N"..." /P"..." /TESTMANAGER /C"-Scenario УправлениеITОтделом8.ПроверкаУИТ -PathIB %InfoBaseLocation% -CloseAfterExecution True -ErrorFile %ErrorFile%"
 Процедура ЗапускТестовойСреды()
 
 //		+ /StartTest
