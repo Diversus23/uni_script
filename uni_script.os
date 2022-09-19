@@ -2723,14 +2723,13 @@
 		Возврат;
 	КонецЕсли;
 
+	Settings		 	= Параметры["/Settings"];
+	Section			 	= Параметры["/Section"];
+	Настройки 			= ПрочитатьСекциюINIФайла(Settings, Section);
 	мПрефикс 			= Параметры["/Prefix"];
 	Если НЕ ЗначениеЗаполнено(мПрефикс) Тогда
 		мПрефикс		= Настройки.Получить("SITE_ID_PROGRAM");
 	КонецЕсли;
-
-	Settings		 	= Параметры["/Settings"];
-	Section			 	= Параметры["/Section"];
-	Настройки 			= ПрочитатьСекциюINIФайла(Settings, Section);
 	SITE_ID_PROGRAM		= мПрефикс; 	// it	
 	VERSION 			= Настройки.Получить("VERSION");			// 3.1.9.1
 	VERSION_UPDATES		= Настройки.Получить("VERSION_UPDATES");	// 3.1.8.6
