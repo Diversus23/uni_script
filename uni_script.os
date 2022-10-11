@@ -315,7 +315,7 @@
 //				- /VanessaEpf путь к файлу Epf Vanessa Automation
 //				- /VanessaSettings раздел файла settings.ini с настройками
 //				- /Workspace параметры запуска %V83PATH% /Execute C:\vanessa-automation\vanessa-automation.epf /TESTMANAGER /C"StartFeaturePlayer;VBParams=C:\VBParams.json"
-//				- /Coverage признак включения анализа покрытия.
+//				- /Coverage41C признак включения анализа покрытия.
 //				- /URLDebug адрес отладчика, например, http://127.0.0.1:1550/.
 //				- /FilesSrc путь к исходникам проекта выгруженного из ЕДТ.
 //				- /Project путь к проекту.
@@ -464,7 +464,7 @@
 	Парсер.ДобавитьИменованныйПараметр("/TypeDebug");
 	Парсер.ДобавитьИменованныйПараметр("/DebugURL");
 	Парсер.ДобавитьИменованныйПараметр("/AutoLinkDebug");
-	Парсер.ДобавитьИменованныйПараметр("/Coverage");
+	Парсер.ДобавитьИменованныйПараметр("/Coverage41C");
 	Парсер.ДобавитьИменованныйПараметр("/URLDebug");
 	Парсер.ДобавитьИменованныйПараметр("/FilesSrc");
 	Парсер.ДобавитьИменованныйПараметр("/PrefixFile");
