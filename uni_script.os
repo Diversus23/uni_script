@@ -3437,7 +3437,7 @@
 		Если ЗначениеЗаполнено(Параметры["/DB_Server"]) Тогда 
 			ПараметрыСУБД.Вставить("СерверСУБД", Параметры["/DB_Server"]);
 		Иначе
-			ПараметрыСУБД.Вставить("СерверСУБД", "127.0.0.1");
+			ПараметрыСУБД.Вставить("СерверСУБД", ПараметрыБазы1С.Сервер1С);
 		КонецЕсли;
 		Лог.Информация("Сервер БД " + ПараметрыСУБД.ТипСУБД + ": " + ПараметрыСУБД.СерверСУБД);
 
@@ -7451,7 +7451,7 @@
 
 КонецПроцедуры
 
-// oscript "c:\Projects\uni_script\uni_script.os" /VanessaAutomationTest /F "C:\Projects\_Конфигурации\Телеграмм" /FileName "C:\Users\admin\Desktop\vanessa-automation-single.epf" /WorkspaceRoot c:\Projects\telegram\test /VAParams c:\Projects\telegram\test\VAParams.json
+// oscript "c:\Projects\uni_script\uni_script.os" /VanessaAutomationTest /F "C:\Projects\_Конфигурации\Телеграмм" /FileName "c:\Projects\vanessa-automation\vanessa-automation.epf" /WorkspaceRoot "c:\Projects\telegram\tests" /VAParams "c:\Projects\telegram\tests\VAParams.json"
 Процедура ВыполнитьТестированиеVanessaAutomation()
 	
 	ФайлVA = Параметры["/FileName"];
@@ -7483,12 +7483,13 @@
 	ДополнительныеПараметры = Конфигуратор.ПолучитьПараметрыЗапуска();
 	ДополнительныеПараметры[0] = "ENTERPRISE";
 	ДополнительныеПараметры.Добавить("/TESTMANAGER");
-	ДополнительныеПараметры.Добавить("/Execute " + ФайлVA);
+	ДополнительныеПараметры.Добавить("/Execute """ + ФайлVA + """");
 	Если ЗначениеЗаполнено(Параметры["/Log"]) Тогда
 		ДополнительныеПараметры.Добавить("/Out """ + Параметры["/Log"] + """");
 	КонецЕсли;
-	ДополнительныеПараметры.Добавить("/C StartFeaturePlayer;QuietInstallVanessaExt;WorkspaceRoot=" + WorkspaceRoot + ";VAParams=" + VAParams + ";");
+	ДополнительныеПараметры.Добавить("/C ""StartFeaturePlayer;QuietInstallVanessaExt;WorkspaceRoot=" + WorkspaceRoot + ";VAParams=" + VAParams + ";""");
 
+	Сообщить(Конфигуратор.ПутьКПлатформе1С());
 	Для Индекс = 0 По ДополнительныеПараметры.Количество() - 1 Цикл
 		Сообщить(ДополнительныеПараметры[Индекс]);
 	КонецЦикла;
